@@ -1,42 +1,23 @@
-#include "HeapSort.hpp"
-
 #include <iostream>
+
+#include <HeapSort.hpp>
+
 #include <vector>
 
 
 
-template <typename T>
-void randInit(std::vector<T>& _vector, size_t _amount, uint64_t _max_module = 1000) noexcept
+int main(int _argc, char* _argv[]) 
 {
-	static_assert(std::is_integral_v<T>);
+    std::vector<int> vec = { 3, 5, 1, 0, 12, 43, 123, 1, -34, -123, 4, 15, 56 };
+    auto out = std::ostream_iterator<int>(std::cout, " ");
 
-	_vector.reserve(_amount);
-	for (size_t i = 0; i < _amount; ++i)
-	{
-		_vector.push_back(rand() % (2 * _max_module) - _max_module);
-	}
-}
+    std::cout << "Initial vector:" << std::endl;
+    std::copy(std::begin(vec), std::end(vec), out);
 
+    HeapSort(std::begin(vec), std::end(vec));
 
+    std::cout << std::endl << "Sorted vector:" << std::endl;
+    std::copy(std::begin(vec), std::end(vec), out);
 
-int main(int argc, char** argv)
-{
-	std::vector<int> vec;
-
-	randInit(vec, 20, 100);
-
-	for (int el : vec)
-	{
-		std::cout << el << ' ';
-	}
-
-	std::cout << "\n\nHeapSort:\n\n";
-
-	HeapSort(vec.begin(), vec.end(), std::greater<int>());
-	for (int el : vec)
-	{
-		std::cout << el << ' ';
-	}
-
-	return 0;
+    return 0;
 }
