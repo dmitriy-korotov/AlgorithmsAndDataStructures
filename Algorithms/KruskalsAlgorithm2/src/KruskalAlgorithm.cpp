@@ -1,5 +1,6 @@
 #include <KruskalAlgorithm.hpp>
 
+#include <iostream>
 
 
 auto compare::operator() (Edge const &a, Edge const &b) const noexcept -> bool
@@ -53,7 +54,7 @@ auto KruskalAlgorithm(std::vector<Edge>& edges, int n) noexcept -> std::vector<E
  
         int x = ds.Find(next_edge.src);
         int y = ds.Find(next_edge.dest);
- 
+
         if (x != y)
         {
             MST.push_back(next_edge);

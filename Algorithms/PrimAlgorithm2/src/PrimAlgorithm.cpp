@@ -1,6 +1,7 @@
 #include <PrimAlgorithm.hpp>
 
 #include <queue>
+#include <iostream>
 
 
 
@@ -61,6 +62,12 @@ auto Graph::primMST() noexcept -> void
         }
     }
  
+    size_t total_weight = 0;
     for (int i = 1; i < V; ++i)
-        printf("%d - %d\n", parent[i], i);
+    {
+        printf("(%d, %d, %d)\n", parent[i], i, key[i]);
+        total_weight += key[i];
+    }
+
+    std::cout << "Total weight: " << total_weight << std::endl;
 }
